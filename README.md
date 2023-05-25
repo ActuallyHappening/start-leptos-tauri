@@ -17,10 +17,12 @@ don't run them together (unless you change the folders they output to).
 ## WIP:
 This template works for me on my machine, but there are still a few issues
 - There is still an error about conflicting build artifacts
-- I haven't tested all of leptos' features using client side rendering (i.e. using trunk)
+
 
 ## Development:
 I am developing a personal project, this is intended to give a foothold for others
 who are trying to solve the same issues as me.
+
+This article helped me: https://dev.to/stevepryde/create-a-desktop-app-in-rust-using-tauri-and-yew-2bhe
 
 I am very happy to document this more, please, just add a github issue and I will!

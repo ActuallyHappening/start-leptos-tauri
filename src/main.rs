@@ -1,7 +1,7 @@
 use leptos::*;
 use leptos_app::app::*;
-use log::info;
 use leptos_app::app::*;
+use log::info;
 
 #[cfg(feature = "ssr")]
 #[actix_web::main]
@@ -46,8 +46,8 @@ pub fn main() {
 	// prefer using `cargo leptos serve` instead
 	// to run: `trunk serve --open --features ssg`
 
-	console_log::init_with_level(log::Level::Debug).expect("error initializing logger");
 	console_error_panic_hook::set_once();
+	console_log::init_with_level(log::Level::Debug).expect("error initializing logger");
 
 	info!("Running leptos application as ssg ...");
 
@@ -64,15 +64,24 @@ pub fn main() {
 }
 
 use wasm_bindgen::prelude::wasm_bindgen;
+use wasm_bindgen::JsValue;
+
 #[cfg(feature = "tauri")]
 #[wasm_bindgen]
 extern "C" {
-	#[wasm_bindgen(js_name = "window.__TAURI__.tauri.invoke")]
-	fn tauri_invoke(cmd: &str, args: js_sys::Object) -> String;
+	#[wasm_bindgen(js_name = "window.__TAURI__.tauri.invoke", catch)]
+	async fn tauri_invoke(cmd: &str, args: js_sys::Object) -> Result<JsValue, js_sys::Error>;
 }
 
 #[cfg(feature = "tauri")]
 fn invoke_example_command() {
-	let ret = tauri_invoke("example_command", js_sys::Object::new());
-	info!("tauri_invoke returned: {}", ret);
+	use js_sys::JsString;
+
+	wasm_bindgen_futures::spawn_local(async {
+		let ret = tauri_invoke("command_example", js_sys::Object::new())
+			.await
+			.expect("No errors from js interop");
+		let str: String = JsString::from(ret).into();
+		info!("tauri_invoke returned: {}", str);
+	})
 }

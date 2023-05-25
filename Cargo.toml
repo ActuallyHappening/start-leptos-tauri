@@ -23,6 +23,7 @@ wasm-bindgen = "=0.2.84"
 js-sys = "=0.3.61"
 console_log = "1.0.0"
 log = "0.4.17"
+wasm-bindgen-futures = "=0.4.34"
 
 [features]
 ## For developing purposes, so my IDE compiles everything
