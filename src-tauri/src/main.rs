@@ -7,7 +7,7 @@ use tauri::{command, generate_context, generate_handler};
 use log::info;
 
 #[command]
-async fn run_ble_example() {
+async fn run_command_example() {
 	info!("[tauri] run_ble_example command executing ...");
 	
 	println!("You should see this on your native console!");

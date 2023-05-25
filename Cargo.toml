@@ -1,5 +1,5 @@
 [package]
-name = "leptos_start"
+name = "leptos_app"
 version = "0.1.0"
 edition = "2021"
 
@@ -23,7 +23,12 @@ leptos_router = { version = "0.3", default-features = false }
 wasm-bindgen = "=0.2.84"
 
 [features]
+## For using trunk
 ssg = ["leptos/csr", "leptos_meta/csr", "leptos_router/csr"]
+## For using tauri integration (requires trunk hence requires `ssg` feature)
+tauri = ["ssg"]
+
+### From leptos template
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
 ssr = [
   "dep:actix-files",
