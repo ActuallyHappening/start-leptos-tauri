@@ -3,8 +3,8 @@ The leptos part is based off this template: https://github.com/leptos-rs/start.
 The Tauri part is based off this command: `cargo tauri init`.
 
 ## How to use:
-I have not setup `cargo generate` yet, so you will have to clone this repo and
-manually copy the files into your project.
+`cargo generate ActuallyHappening/start-leptos-tauri`
+
 Or, just poke around and copy some configs or code, as you wish.
 
 ## How to run:
