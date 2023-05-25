@@ -9,7 +9,7 @@ Or, just poke around and copy some configs or code, as you wish.
 
 ## How to run:
 To run tauri, run `cargo tauri dev` (or preferrably `RUST_LOG=info cargo tauri dev` for good logging).
-To view static site, run `trunk serve --open --features ssg`.
+To view static site, run `trunk serve --open --no-default-features --features ssg`.
 To view serve site, run `cargo leptos serve` and open to `http://localhost:3000/`.
 Currently, both `cargo leptos` and `trunk serve` use the same folder: `dist`, so
 don't run them together (unless you change the folders they output to).

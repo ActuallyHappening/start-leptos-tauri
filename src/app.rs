@@ -10,9 +10,21 @@ pub fn App(cx: Scope) -> impl IntoView {
 	view! {
 			cx,
 
+
 			// injects a stylesheet into the document <head>
 			// id=leptos means cargo-leptos will hot-reload this stylesheet
-			<Stylesheet id="leptos" href="/pkg/leptos_start.css"/>
+			// <Stylesheet id="leptos" href="/pkg/leptos_start.css"/>
+
+			{move || {
+				// if feature=ssg, then trunk handles the css injection for us :)
+				#[cfg(not(feature = "ssg"))]
+				{
+					warn!("cargo-leptos: injecting stylesheet");
+					// injects a stylesheet into the document <head>
+					// id=leptos means cargo-leptos will hot-reload this stylesheet
+					view!{cx, <Stylesheet id="leptos" href="/pkg/leptos_start.css"/>}
+				}
+			}}
 
 			// sets the document title
 			<Title text="Welcome to Leptos"/>
