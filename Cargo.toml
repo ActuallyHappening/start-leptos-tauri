@@ -13,7 +13,6 @@ members = ["src-tauri"]
 actix-files = { version = "0.6", optional = true }
 actix-web = { version = "4", optional = true, features = ["macros"] }
 console_error_panic_hook = "0.1"
-cfg-if = "1"
 leptos = { version = "0.3", default-features = false, features = [
   "serde",
 ] }
@@ -21,8 +20,14 @@ leptos_meta = { version = "0.3", default-features = false }
 leptos_actix = { version = "0.3", optional = true }
 leptos_router = { version = "0.3", default-features = false }
 wasm-bindgen = "=0.2.84"
+js-sys = "=0.3.61"
+console_log = "1.0.0"
+log = "0.4.17"
 
 [features]
+## For developing purposes, so my IDE compiles everything
+default = ["tauri"]
+
 ## For using trunk
 ssg = ["leptos/csr", "leptos_meta/csr", "leptos_router/csr"]
 ## For using tauri integration (requires trunk hence requires `ssg` feature)
@@ -30,14 +35,7 @@ tauri = ["ssg"]
 
 ### From leptos template
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
-ssr = [
-  "dep:actix-files",
-  "dep:actix-web",
-  "dep:leptos_actix",
-  "leptos/ssr",
-  "leptos_meta/ssr",
-  "leptos_router/ssr",
-]
+ssr = ["dep:actix-files", "dep:actix-web", "dep:leptos_actix", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
 
 [package.metadata.leptos]
 # The name used by wasm-bindgen/cargo-leptos for the JS/WASM bundle. Defaults to the crate name   
@@ -77,7 +75,7 @@ bin-features = ["ssr"]
 # If the --no-default-features flag should be used when compiling the bin target
 #
 # Optional. Defaults to false.
-bin-default-features = false
+bin-default-features = true
 
 # The features to use when compiling the lib target
 #
@@ -87,4 +85,4 @@ lib-features = ["hydrate"]
 # If the --no-default-features flag should be used when compiling the lib target
 #
 # Optional. Defaults to false.
-lib-default-features = false
+lib-default-features = true
