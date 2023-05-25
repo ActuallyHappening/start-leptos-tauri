@@ -1,5 +1,5 @@
 use leptos::*;
-use leptos_app::app::*;
+use web_app::app::*;
 
 #[cfg(feature = "ssr")]
 #[actix_web::main]

@@ -14,10 +14,6 @@ To view serve site, run `cargo leptos serve` and open to `http://localhost:3000/
 Currently, both `cargo leptos` and `trunk serve` use the same folder: `dist`, so
 don't run them together (unless you change the folders they output to).
 
-## WIP:
-This template works for me on my machine, but there are still a few issues
-- There is still an error about conflicting build artifacts
-
 
 ## Development:
 I am developing a personal project, this is intended to give a foothold for others
