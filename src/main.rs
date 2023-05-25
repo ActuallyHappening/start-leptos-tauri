@@ -1,7 +1,5 @@
 use leptos::*;
 use leptos_app::app::*;
-use leptos_app::app::*;
-use log::info;
 
 #[cfg(feature = "ssr")]
 #[actix_web::main]
@@ -49,10 +47,10 @@ pub fn main() {
 	console_error_panic_hook::set_once();
 	console_log::init_with_level(log::Level::Debug).expect("error initializing logger");
 
-	info!("Running leptos application as ssg ...");
+	log::info!("Running leptos application as ssg ...");
 
 	#[cfg(feature = "tauri")]
-	info!("invoking tauri command from front end ...");
+	log::info!("invoking tauri command from front end ...");
 	#[cfg(feature = "tauri")]
 	invoke_example_command();
 
@@ -63,7 +61,9 @@ pub fn main() {
 	});
 }
 
+#[cfg(feature = "tauri")]
 use wasm_bindgen::prelude::wasm_bindgen;
+#[cfg(feature = "tauri")]
 use wasm_bindgen::JsValue;
 
 #[cfg(feature = "tauri")]
@@ -82,6 +82,6 @@ fn invoke_example_command() {
 			.await
 			.expect("No errors from js interop");
 		let str: String = JsString::from(ret).into();
-		info!("tauri_invoke returned: {}", str);
+		log::info!("tauri_invoke returned: {}", str);
 	})
 }
