@@ -20,11 +20,11 @@ leptos = { version = "0.3", default-features = false, features = [
 leptos_meta = { version = "0.3", default-features = false }
 leptos_actix = { version = "0.3", optional = true }
 leptos_router = { version = "0.3", default-features = false }
-wasm-bindgen = "=0.2.84"
-js-sys = "=0.3.61"
+wasm-bindgen = "0.2"
+js-sys = "0.3"
 console_log = "1.0.0"
 log = "0.4.17"
-wasm-bindgen-futures = "=0.4.34"
+wasm-bindgen-futures = "0.4"
 
 [features]
 ## For developing purposes, so my IDE compiles everything
